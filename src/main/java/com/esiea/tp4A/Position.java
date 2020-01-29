@@ -1,37 +1,15 @@
 package com.esiea.tp4A;
 
 public class Position {
-    private int x;
-    private int y;
+    private Point x;
+    private Point y;
     private Direction direction;
 
-    public Position(int x, int y, Direction direction) {
+    public Position(Point x, Point y, Direction direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
     }
 
-    public int getX() {
-        return x;
-    }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
 }
