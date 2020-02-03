@@ -1,22 +1,37 @@
 package com.esiea.tp4A;
 
 public class Point {
-    public int pos;
-    public final int maxPos;
-    public final int minPos;
+    public int posX;
+    public int posY;
+    public final int maxPosX;
+    public final int minPosX;
+    public final int maxPosY;
+    public final int minPosY;
 
-    public Point(int pos){
-        this.pos = pos;
-        this.maxPos = 50;
-        this.minPos = -49;
+
+    public Point(int posX, int posY){
+        this.posX = posX;
+        this.posY = posY;
+        this.maxPosX = 50;
+        this.minPosX = -49;
+        this.maxPosY = 50;
+        this.minPosY = -49;
     }
 
-    public void forward() {
-        this.pos = (this.pos + 1) > maxPos ? this.minPos : this.pos + 1;
-    }
-    public void backward() {
-        this.pos = (this.pos -1) < minPos ? this.maxPos : this.pos - 1;
+    public int goForward() {
+         return this.posX = (this.posX + 1) > maxPosX ? this.minPosX : this.posX + 1;
     }
 
+    public int goBackward() {
+        return this.posX = (this.posX -1) < minPosX ? this.maxPosX : this.posX - 1;
+    }
+
+    public int goLeft() {
+        return this.posY = (this.posY - 1 ) < minPosY ? this.maxPosY : this.posY - 1;
+    }
+
+    public int goRight() {
+        return this.posY = (this.posY + 1 ) > maxPosY ? this.minPosY : this.posY + 1;
+    }
 
 }
