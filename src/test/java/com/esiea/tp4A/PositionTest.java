@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class PositionTest {
+    public final PlanetMap planetMap = new PlanetMap();
+
     @ParameterizedTest
     @CsvSource({
         "0,0,N,W",
@@ -16,7 +18,7 @@ public class PositionTest {
         "0,0,E,N"
     })
     void is_position_rotated_left(int posX, int posY, Direction direction, Direction expectedDirection){
-        Position position = generatePosition(posX, posY, direction);
+        Position position = generatePosition(posX, posY, direction,planetMap);
         assertThat(position.rotateLeft()).isEqualTo(expectedDirection);
     }
 
@@ -28,7 +30,7 @@ public class PositionTest {
         "0,0,W,N"
     })
     void is_position_rotated_right(int posX, int posY, Direction direction, Direction expectedDirection){
-        Position position = generatePosition(posX, posY, direction);
+        Position position = generatePosition(posX, posY, direction,planetMap);
         assertThat(position.rotateRight()).isEqualTo(expectedDirection);
     }
 
@@ -45,7 +47,7 @@ public class PositionTest {
         "-49,0,W,50,0"
     })
     void is_position_moved_forward_right(int posX, int posY, Direction direction, int expectedPosX, int expectedPosY){
-        Position position = generatePosition(posX, posY, direction);
+        Position position = generatePosition(posX, posY, direction, planetMap);
         position.goForward();
         assertThat(position.point.posX).isEqualTo(expectedPosX);
         assertThat(position.point.posY).isEqualTo(expectedPosY);
@@ -62,14 +64,14 @@ public class PositionTest {
         "50,0,W,-49,0"
     })
     void is_position_moved_backward_right(int posX, int posY, Direction direction, int expectedPosX, int expectedPosY){
-        Position position = generatePosition(posX, posY, direction);
+        Position position = generatePosition(posX, posY, direction,planetMap);
         position.goBackward();
         assertThat(position.point.posX).isEqualTo(expectedPosX);
         assertThat(position.point.posY).isEqualTo(expectedPosY);
     }
 
-    private Position generatePosition(int posX, int posY, Direction direction) {
-        Point point = new Point(posX, posY);
+    private Position generatePosition(int posX, int posY, Direction direction,PlanetMap planetMap) {
+        Point point = new Point(posX, posY, planetMap);
         return new Position(point, direction);
     }
 }
