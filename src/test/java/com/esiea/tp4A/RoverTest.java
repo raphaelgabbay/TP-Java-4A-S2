@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class RoverTest {
+    public final PlanetMap planetMap = new PlanetMap();
+
     @ParameterizedTest
     @CsvSource(value = {
         "0,0,N,fb,0,0,N",
@@ -16,16 +18,16 @@ public class RoverTest {
     })
     void is_rover_moved_right(int posX, int posY, Direction direction, String stringCommands ,int expectedPosX, int expectedPosY, Direction expectedDirection){
 
-        Rover rover = new Rover(generatePosition(posX, posY, direction));
+        Rover rover = new Rover(generatePosition(posX, posY,direction,planetMap),planetMap);
         char [] commands = stringCommands.toCharArray();
         rover.move(commands);
         assertThat(rover.position.point.posX).isEqualTo(expectedPosX);
         assertThat(rover.position.point.posY).isEqualTo(expectedPosY);
-        assertThat(rover.position.direction).isEqualTo(expectedDirection);a
+        assertThat(rover.position.direction).isEqualTo(expectedDirection);
     }
 
-    private Position generatePosition(int posX, int posY, Direction direction) {
-        Point point = new Point(posX, posY);
+    private Position generatePosition(int posX, int posY, Direction direction, PlanetMap planetMap) {
+        Point point = new Point(posX, posY, planetMap);
         return new Position(point, direction);
     }
 }

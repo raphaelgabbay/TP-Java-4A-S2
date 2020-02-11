@@ -2,9 +2,11 @@ package com.esiea.tp4A;
 
 public class Rover {
     public final Position position;
+    public PlanetMap planetMap;
 
-    public Rover(Position position) {
+    public Rover(Position position,PlanetMap planetMap) {
         this.position = position;
+        this.planetMap = planetMap;
     }
 
     public Position move(char[] commands){
