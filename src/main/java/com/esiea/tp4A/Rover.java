@@ -11,13 +11,18 @@ public class Rover {
 
     public Position move(char[] commands){
         for (char command : commands) {
-            switch(command) {
-                case 'l': position.rotateLeft(); break;
-                case 'r': position.rotateRight(); break;
-                case 'f': position.goForward(); break;
-                case 'b': position.goBackward(); break;
-            }
+            executeCommand(command);
         }
         return position;
+    }
+
+    private void executeCommand(char command) {
+        switch(command) {
+            case 'l': position.rotateLeft(); break;
+            case 'r': position.rotateRight(); break;
+            case 'f': position.goForward(); break;
+            case 'b': position.goBackward(); break;
+            default: break;
+        }
     }
 }
