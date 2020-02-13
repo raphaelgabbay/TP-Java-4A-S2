@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class PositionTest {
-    public final PlanetMap planetMap = new PlanetMap();
+    public final PlanetMap planetMap = new PlanetMap(10);
 
     @ParameterizedTest
     @CsvSource({
