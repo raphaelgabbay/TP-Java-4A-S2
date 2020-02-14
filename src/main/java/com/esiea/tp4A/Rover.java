@@ -22,7 +22,6 @@ public class Rover {
             case 'r': position.rotateRight(); break;
             case 'f': position.goForward(); break;
             case 'b': position.goBackward(); break;
-            default: break;
         }
     }
 }

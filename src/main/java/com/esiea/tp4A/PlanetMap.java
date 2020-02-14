@@ -19,7 +19,7 @@ public class PlanetMap {
         this.generateObstacles(numberOfObstacles);
     }
 
-    private void generateObstacles(int number){
+    public void generateObstacles(int number){
         this.obstacles = new ArrayList<>();
         if(number < 0 ) return;
         while (obstacles.size() != number) {
@@ -34,4 +34,8 @@ public class PlanetMap {
     }
 
 
+    public boolean checkIfObstacle(int x, int y) {
+        return obstacles.stream()
+            .anyMatch(o -> o.point.posX == x && o.point.posY == y);
+    }
 }
