@@ -26,8 +26,34 @@ public class RoverTest {
         assertThat(rover.position.direction).isEqualTo(expectedDirection);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+        "0,50,N,0,-49,f,0,50,N",
+        "0,50,S,0,49,f,0,50,S",
+        "7,8,E,8,8,f,7,8,E",
+        "0,0,W,-2,0,f,-1,0,W",
+
+        "0,0,N,0,-1,b,0,0,N",
+        "0,50,S,0,-49,b,0,50,S",
+        "7,8,E,6,8,b,7,8,E",
+        "0,0,W,1,0,b,0,0,W",
+
+    })
+    void is_rover_respect_obstacles(int roverX, int roverY, Direction direction,int obsX,int obsY,String stringCommands,int expectedX,int expectedY,Direction expectedDirection){
+        Rover rover = new Rover(generatePosition(roverX, roverY,direction,planetMap),planetMap);
+        char [] commands = stringCommands.toCharArray();
+        planetMap.generateObstacles(0);
+        planetMap.obstacles.add(new Obstacle(new Point(obsX,obsY,planetMap)));
+        rover.move(commands);
+        assertThat(rover.position.point.posX).isEqualTo(expectedX);
+        assertThat(rover.position.point.posY).isEqualTo(expectedY);
+        assertThat(rover.position.direction).isEqualTo(expectedDirection);
+    }
+
     private Position generatePosition(int posX, int posY, Direction direction, PlanetMap planetMap) {
         Point point = new Point(posX, posY, planetMap);
         return new Position(point, direction);
     }
+
+
 }
