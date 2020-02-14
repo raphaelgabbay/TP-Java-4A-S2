@@ -20,20 +20,20 @@ public class Position {
 
     public Point goForward() {
         switch (direction) {
-            case N : point.posY = (point.posY + 1) > point.map.maxPosY ? point.map.minPosY : point.posY + 1; break;
-            case E : point.posX = (point.posX + 1) > point.map.maxPosX ? point.map.minPosX : point.posX + 1; break;
-            case S : point.posY = (point.posY - 1) < point.map.minPosY ? point.map.maxPosY : point.posY - 1; break;
-            case W : point.posX = (point.posX - 1) < point.map.minPosX ? point.map.maxPosX : point.posX - 1; break;
+            case N : point.posYForward(); break;
+            case E : point.posXForward(); break;
+            case S : point.posYBackward(); break;
+            case W : point.posXBackward(); break;
         }
         return point;
     }
 
     public Point goBackward() {
         switch(direction) {
-            case N : point.posY = (point.posY - 1) < point.map.minPosY ? point.map.maxPosY : point.posY - 1; break;
-            case E : point.posX = (point.posX - 1) < point.map.minPosX ? point.map.maxPosX : point.posX - 1; break;
-            case S : point.posY = (point.posY + 1) > point.map.maxPosY ? point.map.minPosY : point.posY + 1; break;
-            case W : point.posX = (point.posX + 1) > point.map.maxPosX ? point.map.minPosX : point.posX + 1; break;
+            case N : point.posYBackward(); break;
+            case E : point.posXBackward(); break;
+            case S : point.posYForward(); break;
+            case W : point.posXForward(); break;
         }
         return point;
     }
