@@ -1,12 +1,14 @@
 package com.esiea.tp4A;
 
+import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PlanetMapTest {
-    PlanetMap pm = new PlanetMap(0);
+public class MarsTest {
+    Mars pm = new Mars(0);
     @ParameterizedTest
     @CsvSource({
         "0,0",
@@ -29,7 +31,7 @@ public class PlanetMapTest {
     })
     void is_obstacle_in_given_position(int x,int y,int resX,int resY,boolean expected){
         pm.generateObstacles(0);
-        pm.obstacles.add(new Obstacle(new Point(x,y,pm)));
+        pm.obstacles.add(new Position.FixedPosition(x,y, Direction.NORTH));
         assertThat(pm.checkIfObstacle(resX,resY)).isEqualTo(expected);
     }
 

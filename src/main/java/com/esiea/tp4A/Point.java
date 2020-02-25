@@ -3,12 +3,12 @@ package com.esiea.tp4A;
 public class Point {
     public int posX;
     public int posY;
-    public final PlanetMap map;
+    public final Mars map;
 
-    public Point(int posX, int posY, PlanetMap planetMap){
+    public Point(int posX, int posY, Mars mars){
         this.posX = posX;
         this.posY = posY;
-        this.map =  planetMap;
+        this.map = mars;
     }
 
     public void posXForward(){
