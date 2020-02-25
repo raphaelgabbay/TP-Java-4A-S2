@@ -1,48 +1,50 @@
-package com.esiea.tp4A;
+package com.esiea.tp4A.domain;
+
+import com.esiea.tp4A.PolarDegreesRotation;
 
 public enum Direction implements PolarDegreesRotation {
-    N{
+    NORTH {
         @Override
         public Direction rotateLeft() {
-            return W;
+            return WEST;
         }
 
         @Override
         public Direction rotateRight() {
-            return E;
+            return EAST;
         }
     },
-    S {
+    SOUTH {
         @Override
         public Direction rotateLeft() {
-            return E;
+            return EAST;
         }
 
         @Override
         public Direction rotateRight() {
-            return W;
+            return WEST;
         }
     },
-    E {
+    EAST {
         @Override
         public Direction rotateLeft() {
-            return N;
+            return NORTH;
         }
 
         @Override
         public Direction rotateRight() {
-            return S;
+            return SOUTH;
         }
     },
-    W {
+    WEST {
         @Override
         public Direction rotateLeft() {
-            return S;
+            return SOUTH;
         }
 
         @Override
         public Direction rotateRight() {
-            return N;
+            return NORTH;
         }
     }
 }
