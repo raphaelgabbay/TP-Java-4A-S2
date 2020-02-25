@@ -1,27 +1,29 @@
 package com.esiea.tp4A;
 
-public class Rover {
-    public final Position position;
-    public PlanetMap planetMap;
+import com.esiea.tp4A.domain.MarsRover;
 
-    public Rover(Position position,PlanetMap planetMap) {
-        this.position = position;
-        this.planetMap = planetMap;
+public class Rover implements MarsRover {
+    public final PositionRover positionRover;
+    public final Mars mars;
+
+    public Rover(PositionRover positionRover, Mars mars) {
+        this.positionRover = positionRover;
+        this.mars = mars;
     }
 
-    public Position move(char[] commands){
+    public PositionRover move(char[] commands){
         for (char command : commands) {
             executeCommand(command);
         }
-        return position;
+        return positionRover;
     }
 
     private void executeCommand(char command) {
         switch(command) {
-            case 'l': position.rotateLeft(); break;
-            case 'r': position.rotateRight(); break;
-            case 'f': position.goForward(); break;
-            case 'b': position.goBackward(); break;
+            case 'l': positionRover.rotateLeft(); break;
+            case 'r': positionRover.rotateRight(); break;
+            case 'f': positionRover.goForward(); break;
+            case 'b': positionRover.goBackward(); break;
         }
     }
 }
