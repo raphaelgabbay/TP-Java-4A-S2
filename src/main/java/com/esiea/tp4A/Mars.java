@@ -44,7 +44,6 @@ public class Mars implements PlanetMap {
             .anyMatch(p -> p.getX() == x && p.getY() == y);
     }
 
-    @Override
     public void destroyObstacle(int x, int y) {
         obstacles.removeIf(position -> position.getX() == x && position.getY() == y);
     }
