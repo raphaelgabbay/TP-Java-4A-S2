@@ -1,9 +1,9 @@
 package com.esiea.tp4A;
 
 public class Point {
-    public int posX;
-    public int posY;
-    public final Mars map;
+    private int posY;
+    private int posX;
+    private final Mars map;
 
     public Point(int posX, int posY, Mars mars){
         this.posX = posX;
@@ -12,32 +12,38 @@ public class Point {
     }
 
     public void posXForward(){
-        int posTest = (posX + 1) > map.maxPosX ? map.minPosX : posX + 1;
+        int posTest = (posX + 1) > map.getMaxPosX() ? map.getMinPosX() : posX + 1;
         if(!map.checkIfObstacle(posTest,posY)) {
             posX = posTest;
         }
     }
 
     public void posXBackward(){
-        int posTest = (posX - 1) < map.minPosX ? map.maxPosX : posX - 1;
+        int posTest = (posX - 1) < map.getMinPosX() ? map.getMaxPosX() : posX - 1;
         if(!map.checkIfObstacle(posTest,posY)) {
             posX = posTest;
         }
     }
     public void posYForward(){
-        int posTest = (posY + 1) > map.maxPosY ? map.minPosY : posY + 1;
+        int posTest = (posY + 1) > map.getMaxPosY() ? map.getMinPosY() : posY + 1;
         if(!map.checkIfObstacle(posX ,posTest)) {
             posY = posTest;
         }
     }
     public void posYBackward(){
-        int posTest = (posY - 1) < map.minPosY ? map.maxPosY : posY - 1;
+        int posTest = (posY - 1) < map.getMinPosY() ? map.getMaxPosY() : posY - 1;
         if(!map.checkIfObstacle(posX ,posTest)) {
             posY = posTest;
         }
     }
 
+    public int getPosY() {
+        return posY;
+    }
 
+    public int getPosX() {
+        return posX;
+    }
 
     @Override
     public String toString() {

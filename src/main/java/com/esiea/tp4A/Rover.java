@@ -3,8 +3,8 @@ package com.esiea.tp4A;
 import com.esiea.tp4A.domain.MarsRover;
 
 public class Rover implements MarsRover {
-    public final PositionRover positionRover;
-    public final Mars mars;
+    private final PositionRover positionRover;
+    private final Mars mars;
 
     public Rover(PositionRover positionRover, Mars mars) {
         this.positionRover = positionRover;
@@ -25,5 +25,9 @@ public class Rover implements MarsRover {
             case 'f': positionRover.goForward(); break;
             case 'b': positionRover.goBackward(); break;
         }
+    }
+
+    public PositionRover getPositionRover() {
+        return positionRover;
     }
 }

@@ -8,11 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Mars implements PlanetMap {
-    public final int maxPosX;
-    public final int minPosX;
-    public final int maxPosY;
-    public final int minPosY;
-    public Set<Position> obstacles;
+    private final int maxPosX;
+    private final int minPosX;
+    private final int maxPosY;
+    private final int minPosY;
+    private final Set<Position> obstacles = new HashSet<>();
 
     public Mars(int numberOfObstacles) {
         this.maxPosX = 50;
@@ -23,19 +23,19 @@ public class Mars implements PlanetMap {
         this.generateObstacles(numberOfObstacles);
     }
 
-    public void generateObstacles(int number){
-        this.obstacles = new HashSet <>();
-        if(number < 0 ) return;
-        while (obstacles.size() != number) {
-            Position obstacle = generateUniqueRandomObstacle();
-            obstacles.add(obstacle);
+    public void generateObstacles(int number) {
+        if(number >= 0 ) {
+            while (obstacles.size() != number) {
+                Position obstacle = generateUniqueRandomObstacle();
+                obstacles.add(obstacle);
+            }
         }
     }
 
     private Position generateUniqueRandomObstacle(){
         Commons commons = new Commons();
         Point p = new Point(commons.getRandomInt(maxPosX,minPosX),commons.getRandomInt(maxPosY,minPosY),this);
-        return new Position.FixedPosition(p.posX,p.posY,Direction.NORTH);
+        return new Position.FixedPosition(p.getPosX(),p.getPosY(),Direction.NORTH);
     }
 
 
@@ -50,6 +50,26 @@ public class Mars implements PlanetMap {
 
     @Override
     public Set<Position> obstaclePositions() {
+        return obstacles;
+    }
+
+    public int getMaxPosX() {
+        return maxPosX;
+    }
+
+    public int getMinPosX() {
+        return minPosX;
+    }
+
+    public int getMaxPosY() {
+        return maxPosY;
+    }
+
+    public int getMinPosY() {
+        return minPosY;
+    }
+
+    public Set<Position> getObstacles() {
         return obstacles;
     }
 }

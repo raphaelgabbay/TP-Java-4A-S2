@@ -4,8 +4,8 @@ import com.esiea.tp4A.domain.Direction;
 import com.esiea.tp4A.domain.Position;
 
 public class PositionRover implements Position {
-    public final Point point;
-    public Direction direction;
+    private final Point point;
+    private Direction direction;     //la direction ne peut pas être final car on on est obligé de la réaffecter quand elle est modifiée (car c'est un énum)
 
     public PositionRover(Point point, Direction direction) {
         this.point = point;
@@ -43,12 +43,12 @@ public class PositionRover implements Position {
 
     @Override
     public int getX() {
-        return point.posX;
+        return point.getPosX();
     }
 
     @Override
     public int getY() {
-        return point.posY;
+        return point.getPosY();
     }
 
     @Override
