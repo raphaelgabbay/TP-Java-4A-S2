@@ -18,7 +18,7 @@ public class MarsTest {
     })
     void is_number_of_obstacles_correct(int numberOfObstacles,int expectedResult){
         pm.generateObstacles(numberOfObstacles);
-        assertThat(pm.obstacles.size()).isEqualTo(expectedResult);
+        assertThat(pm.getObstacles().size()).isEqualTo(expectedResult);
     }
 
     @ParameterizedTest
@@ -31,7 +31,7 @@ public class MarsTest {
     })
     void is_obstacle_in_given_position(int x,int y,int resX,int resY,boolean expected){
         pm.generateObstacles(0);
-        pm.obstacles.add(new Position.FixedPosition(x,y, Direction.NORTH));
+        pm.getObstacles().add(new Position.FixedPosition(x,y, Direction.NORTH));
         assertThat(pm.checkIfObstacle(resX,resY)).isEqualTo(expected);
     }
 

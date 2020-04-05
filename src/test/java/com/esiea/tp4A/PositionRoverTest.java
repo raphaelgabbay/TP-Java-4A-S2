@@ -50,8 +50,8 @@ public class PositionRoverTest {
     void is_position_moved_forward_right(int posX, int posY, Direction direction, int expectedPosX, int expectedPosY){
         PositionRover positionRover = generatePosition(posX, posY, direction, mars);
         positionRover.goForward();
-        assertThat(positionRover.point.posX).isEqualTo(expectedPosX);
-        assertThat(positionRover.point.posY).isEqualTo(expectedPosY);
+        assertThat(positionRover.getX()).isEqualTo(expectedPosX);
+        assertThat(positionRover.getY()).isEqualTo(expectedPosY);
     }
 
     @ParameterizedTest
@@ -67,8 +67,8 @@ public class PositionRoverTest {
     void is_position_moved_backward_right(int posX, int posY, Direction direction, int expectedPosX, int expectedPosY){
         PositionRover positionRover = generatePosition(posX, posY, direction, mars);
         positionRover.goBackward();
-        assertThat(positionRover.point.posX).isEqualTo(expectedPosX);
-        assertThat(positionRover.point.posY).isEqualTo(expectedPosY);
+        assertThat(positionRover.getX()).isEqualTo(expectedPosX);
+        assertThat(positionRover.getY()).isEqualTo(expectedPosY);
     }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {

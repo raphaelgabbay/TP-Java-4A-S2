@@ -23,9 +23,9 @@ public class RoverTest {
         Rover rover = new Rover(generatePosition(posX, posY,direction, mars), mars);
         char [] commands = stringCommands.toCharArray();
         rover.move(commands);
-        assertThat(rover.positionRover.point.posX).isEqualTo(expectedPosX);
-        assertThat(rover.positionRover.point.posY).isEqualTo(expectedPosY);
-        assertThat(rover.positionRover.direction).isEqualTo(expectedDirection);
+        assertThat(rover.getPositionRover().getX()).isEqualTo(expectedPosX);
+        assertThat(rover.getPositionRover().getY()).isEqualTo(expectedPosY);
+        assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
     }
 
     @ParameterizedTest
@@ -41,15 +41,14 @@ public class RoverTest {
         "0,0,WEST,1,0,b,0,0,WEST",
 
     })
-    void is_rover_respect_obstacles(int roverX, int roverY, Direction direction,int obsX,int obsY,String stringCommands,int expectedX,int expectedY,Direction expectedDirection){
+    void does_rover_respect_obstacles(int roverX, int roverY, Direction direction, int obsX, int obsY, String stringCommands, int expectedX, int expectedY, Direction expectedDirection){
         Rover rover = new Rover(generatePosition(roverX, roverY,direction, mars), mars);
         char [] commands = stringCommands.toCharArray();
-        mars.generateObstacles(0);
-        mars.obstacles.add(new Position.FixedPosition(obsX,obsY,Direction.NORTH));
+        mars.getObstacles().add(new Position.FixedPosition(obsX,obsY,Direction.NORTH));
         rover.move(commands);
-        assertThat(rover.positionRover.point.posX).isEqualTo(expectedX);
-        assertThat(rover.positionRover.point.posY).isEqualTo(expectedY);
-        assertThat(rover.positionRover.direction).isEqualTo(expectedDirection);
+        assertThat(rover.getPositionRover().getX()).isEqualTo(expectedX);
+        assertThat(rover.getPositionRover().getY()).isEqualTo(expectedY);
+        assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
     }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
