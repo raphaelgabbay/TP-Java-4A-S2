@@ -21,8 +21,7 @@ public class RoverTest {
     void is_rover_moved_right(int posX, int posY, Direction direction, String stringCommands , int expectedPosX, int expectedPosY, Direction expectedDirection){
 
         Rover rover = new Rover(generatePosition(posX, posY,direction, mars), mars);
-        char [] commands = stringCommands.toCharArray();
-        rover.move(commands);
+        rover.move(stringCommands);
         assertThat(rover.getPositionRover().getX()).isEqualTo(expectedPosX);
         assertThat(rover.getPositionRover().getY()).isEqualTo(expectedPosY);
         assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
@@ -43,9 +42,8 @@ public class RoverTest {
     })
     void does_rover_respect_obstacles(int roverX, int roverY, Direction direction, int obsX, int obsY, String stringCommands, int expectedX, int expectedY, Direction expectedDirection){
         Rover rover = new Rover(generatePosition(roverX, roverY,direction, mars), mars);
-        char [] commands = stringCommands.toCharArray();
-        mars.getObstacles().add(new Position.FixedPosition(obsX,obsY,Direction.NORTH));
-        rover.move(commands);
+        mars.obstaclePositions().add(new Position.FixedPosition(obsX,obsY,Direction.NORTH));
+        rover.move(stringCommands);
         assertThat(rover.getPositionRover().getX()).isEqualTo(expectedX);
         assertThat(rover.getPositionRover().getY()).isEqualTo(expectedY);
         assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
