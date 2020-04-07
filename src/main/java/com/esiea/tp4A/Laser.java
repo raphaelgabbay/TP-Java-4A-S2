@@ -3,7 +3,7 @@ import com.esiea.tp4A.domain.*;
 
 public class Laser {
     private final Mars mars;
-    private final int range;
+    private int range;
 
     public Laser(Mars mars, int range) {
         this.mars = mars;
@@ -48,4 +48,7 @@ public class Laser {
         }
     }
 
+    public void setRange(int range) {
+        this.range = range;
+    }
 }
