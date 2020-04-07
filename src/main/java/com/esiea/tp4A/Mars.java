@@ -12,7 +12,7 @@ public class Mars implements PlanetMap {
     private final int minPosX;
     private final int maxPosY;
     private final int minPosY;
-    private final Set<Position> obstacles = new HashSet<>();
+    private Set<Position> obstacles = new HashSet<>();
 
     public Mars(int numberOfObstacles) {
         this.maxPosX = 50;
@@ -69,7 +69,7 @@ public class Mars implements PlanetMap {
         return minPosY;
     }
 
-    public Set<Position> getObstacles() {
-        return obstacles;
+    public void setObstacles(Set<Position> obstacles) {
+        this.obstacles = obstacles;
     }
 }
