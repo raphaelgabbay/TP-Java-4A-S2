@@ -23,27 +23,31 @@ public class Laser {
         for(int i = pos.getY(); i < pos.getY() + this.range; i++){
             if(this.mars.checkIfObstacle(pos.getX(), i)) {
                 this.mars.destroyObstacle(pos.getX(), i);
+                break;
             }
         }
     }
     private void shootS(Position pos) {
-        for(int i = pos.getX(); i > pos.getX() - this.range; i--){
+        for(int i = pos.getY(); i > pos.getY() - this.range; i--){
             if(this.mars.checkIfObstacle(pos.getX(), i)) {
                 this.mars.destroyObstacle(pos.getX(), i);
+                break;
             }
         }
     }
     private void shootE(Position pos) {
-        for(int i = pos.getY(); i < pos.getY() + this.range; i++){
-            if(this.mars.checkIfObstacle(pos.getY(), i)) {
-                this.mars.destroyObstacle(pos.getY(), i);
+        for(int i = pos.getX(); i < pos.getX() + this.range; i++){
+            if(this.mars.checkIfObstacle(i, pos.getY())) {
+                this.mars.destroyObstacle(i, pos.getY());
+                break;
             }
         }
     }
     private void shootW(Position pos) {
-        for(int i = pos.getY(); i > pos.getY() - this.range; i--){
-            if(this.mars.checkIfObstacle(pos.getY(), i)) {
-                this.mars.destroyObstacle(pos.getY(), i);
+        for(int i = pos.getX(); i > pos.getX() - this.range; i--){
+            if(this.mars.checkIfObstacle(i, pos.getY())) {
+                this.mars.destroyObstacle(i, pos.getY());
+                break;
             }
         }
     }
