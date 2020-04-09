@@ -8,18 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Mars implements PlanetMap {
-    private final int maxPosX;
-    private final int minPosX;
-    private final int maxPosY;
-    private final int minPosY;
+    private final MapCoordinates coordinates;
     private Set<Position> obstacles = new HashSet<>();
 
     public Mars(int numberOfObstacles) {
-        this.maxPosX = 50;
-        this.minPosX = -49;
-        this.maxPosY = 50;
-        this.minPosY = -49;
-
+        coordinates = new MapCoordinates(50, -49, 50, -49);
         this.generateObstacles(numberOfObstacles);
     }
 
@@ -34,7 +27,8 @@ public class Mars implements PlanetMap {
 
     private Position generateUniqueRandomObstacle(){
         Commons commons = new Commons();
-        Point p = new Point(commons.getRandomInt(maxPosX,minPosX),commons.getRandomInt(maxPosY,minPosY),this);
+        Point p = new Point(commons.getRandomInt(coordinates.getMaxPosX(), coordinates.getMinPosX()),
+            commons.getRandomInt(coordinates.getMaxPosY(), coordinates.getMinPosY()),this);
         return new Position.FixedPosition(p.getPosX(),p.getPosY(),Direction.NORTH);
     }
 
@@ -53,20 +47,8 @@ public class Mars implements PlanetMap {
         return obstacles;
     }
 
-    public int getMaxPosX() {
-        return maxPosX;
-    }
-
-    public int getMinPosX() {
-        return minPosX;
-    }
-
-    public int getMaxPosY() {
-        return maxPosY;
-    }
-
-    public int getMinPosY() {
-        return minPosY;
+    public MapCoordinates getCoordinates() {
+        return coordinates;
     }
 
     public void setObstacles(Set<Position> obstacles) {
