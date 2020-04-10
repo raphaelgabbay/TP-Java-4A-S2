@@ -10,7 +10,7 @@ public class Laser {
         this.range = range;
     }
 
-    public void shoot(Position pos, Direction dir){
+    public void shoot(PositionRover pos, Direction dir){
         switch (dir) {
             case NORTH:shootN(pos); break;
             case SOUTH:shootS(pos); break;
@@ -19,34 +19,38 @@ public class Laser {
         }
     }
 
-    private void shootN(Position pos) {
-        for(int i = pos.getY(); i < pos.getY() + this.range; i++){
-            if(this.mars.checkIfObstacle(pos.getX(), i)) {
-                this.mars.destroyObstacle(pos.getX(), i);
+    private void shootN(PositionRover pos) {
+        Point p = new Point(pos.getX(),pos.getY(),mars);
+        for(int i = 0 ; i < this.range ; i++){
+            if(!p.posYForward()){
+                this.mars.destroyObstacle(p.getPosX(),p.getPosYForward());
                 break;
             }
         }
     }
-    private void shootS(Position pos) {
-        for(int i = pos.getY(); i > pos.getY() - this.range; i--){
-            if(this.mars.checkIfObstacle(pos.getX(), i)) {
-                this.mars.destroyObstacle(pos.getX(), i);
+    private void shootS(PositionRover pos) {
+        Point p = new Point(pos.getX(),pos.getY(),mars);
+        for(int i = 0 ; i < this.range ; i++){
+            if(!p.posYBackward()){
+                this.mars.destroyObstacle(p.getPosX(),p.getPosYBackward());
                 break;
             }
         }
     }
-    private void shootE(Position pos) {
-        for(int i = pos.getX(); i < pos.getX() + this.range; i++){
-            if(this.mars.checkIfObstacle(i, pos.getY())) {
-                this.mars.destroyObstacle(i, pos.getY());
+    private void shootE(PositionRover pos) {
+        Point p = new Point(pos.getX(),pos.getY(),mars);
+        for(int i = 0 ; i < this.range ; i++){
+            if(!p.posXForward()){
+                this.mars.destroyObstacle(p.getPosXForward(),p.getPosY());
                 break;
             }
         }
     }
-    private void shootW(Position pos) {
-        for(int i = pos.getX(); i > pos.getX() - this.range; i--){
-            if(this.mars.checkIfObstacle(i, pos.getY())) {
-                this.mars.destroyObstacle(i, pos.getY());
+    private void shootW(PositionRover pos) {
+        Point p = new Point(pos.getX(),pos.getY(),mars);
+        for(int i = 0 ; i < this.range ; i++){
+            if(!p.posXBackward()){
+                this.mars.destroyObstacle(p.getPosXBackward(),p.getPosY());
                 break;
             }
         }
