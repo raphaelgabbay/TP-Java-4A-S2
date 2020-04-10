@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class PositionRoverTest {
-    public final Mars mars = new Mars(10);
+    public final Mars mars = new Mars(10, 100);
 
     @ParameterizedTest
     @CsvSource({

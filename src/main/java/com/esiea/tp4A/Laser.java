@@ -10,16 +10,21 @@ public class Laser {
         this.range = range;
     }
 
+    //todo : détruire les rovers
     public void shoot(PositionRover pos, Direction dir){
         switch (dir) {
-            case NORTH:shootN(pos); break;
-            case SOUTH:shootS(pos); break;
-            case EAST:shootE(pos); break;
-            case WEST:shootW(pos); break;
+            case NORTH:
+                shootNorth(pos); break;
+            case SOUTH:
+                shootSouth(pos); break;
+            case EAST:
+                shootEast(pos); break;
+            case WEST:
+                shootWest(pos); break;
         }
     }
 
-    private void shootN(PositionRover pos) {
+    private void shootNorth(PositionRover pos) {
         Point p = new Point(pos.getX(),pos.getY(),mars);
         for(int i = 0 ; i < this.range ; i++){
             if(!p.posYForward()){
@@ -28,7 +33,7 @@ public class Laser {
             }
         }
     }
-    private void shootS(PositionRover pos) {
+    private void shootSouth(PositionRover pos) {
         Point p = new Point(pos.getX(),pos.getY(),mars);
         for(int i = 0 ; i < this.range ; i++){
             if(!p.posYBackward()){
@@ -37,7 +42,7 @@ public class Laser {
             }
         }
     }
-    private void shootE(PositionRover pos) {
+    private void shootEast(PositionRover pos) {
         Point p = new Point(pos.getX(),pos.getY(),mars);
         for(int i = 0 ; i < this.range ; i++){
             if(!p.posXForward()){
@@ -46,7 +51,7 @@ public class Laser {
             }
         }
     }
-    private void shootW(PositionRover pos) {
+    private void shootWest(PositionRover pos) {
         Point p = new Point(pos.getX(),pos.getY(),mars);
         for(int i = 0 ; i < this.range ; i++){
             if(!p.posXBackward()){
