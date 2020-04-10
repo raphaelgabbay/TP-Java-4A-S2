@@ -12,7 +12,7 @@ import static com.esiea.tp4A.domain.Direction.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LaserTest {
-    public final Mars mars = new Mars(0);
+    public final Mars mars = new Mars(0, 100);
     Laser laser = new Laser(mars, 0);
 
     @ParameterizedTest
@@ -22,7 +22,7 @@ public class LaserTest {
         "0, 0, 6, 0, NORTH, EAST,5, True, True",
         "0, 0, 2, 1, NORTH, EAST,5, True, True"
     })
-    void is_laser_shot_right(int roverX, int roverY, int obsX, int obsY, Direction direction, Direction directionShoot,int range, boolean expectedIsObstacle, boolean expectedIsObstacle2){
+    void is_laser_shot_east(int roverX, int roverY, int obsX, int obsY, Direction direction, Direction directionShoot,int range, boolean expectedIsObstacle, boolean expectedIsObstacle2){
         PositionRover pos = new PositionRover(new Point(roverX, roverY,mars), NORTH);
         laser.setRange(range);
         mars.obstaclePositions().add(new Position.FixedPosition(obsX,obsY,direction));
@@ -39,7 +39,7 @@ public class LaserTest {
         "0, 0, -6, 0, NORTH, WEST,5, True, True",
         "0, 0, -2, 1, NORTH, WEST,5, True, True"
     })
-    void is_laser_shot_left(int roverX, int roverY, int obsX, int obsY, Direction direction, Direction directionShoot,int range, boolean expectedIsObstacle, boolean expectedIsObstacle2){
+    void is_laser_shot_west(int roverX, int roverY, int obsX, int obsY, Direction direction, Direction directionShoot,int range, boolean expectedIsObstacle, boolean expectedIsObstacle2){
         PositionRover pos = new PositionRover(new Point(roverX, roverY,mars), NORTH);
         laser.setRange(range);
         mars.obstaclePositions().add(new Position.FixedPosition(obsX,obsY,direction));

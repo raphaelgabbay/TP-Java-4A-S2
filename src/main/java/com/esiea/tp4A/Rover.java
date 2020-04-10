@@ -51,7 +51,7 @@ public class Rover implements MarsRover {
 
     @Override
     public MarsRover updateMap(PlanetMap map) {
-        Mars mars = new Mars(0);
+        Mars mars = new Mars(0,100);
         mars.setObstacles(map.obstaclePositions());
         return this;
     }
