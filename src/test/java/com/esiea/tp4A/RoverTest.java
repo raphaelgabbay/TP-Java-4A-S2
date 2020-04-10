@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class RoverTest {
-    public final Mars mars = new Mars(10);
+    public final Mars mars = new Mars(0);
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -48,11 +48,39 @@ public class RoverTest {
         assertThat(rover.getPositionRover().getY()).isEqualTo(expectedY);
         assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
     }
+    @ParameterizedTest
+    @CsvSource(value = {
+        "0,0,NORTH,2,0,2,sff,0,2,NORTH",
+        "0,50,NORTH,2,0,-49,sf,0,-49,NORTH",
+
+        "0,0,SOUTH,2,0,-2,sff,0,-2,SOUTH",
+        "0,-49,SOUTH,2,0,50,sf,0,50,SOUTH",
+
+        "0,0,EAST,2,2,0,sff,2,0,EAST",
+        "50,0,EAST,2,-49,0,sf,-49,0,EAST",
+
+        "0,0,WEST,2,-2,0,sff,-2,0,WEST",
+        "-49,0,WEST,2,50,0,sf,50,0,WEST"
+    })
+    void does_rover_shoot_and_move(int roverX,int roverY,Direction direction, int range, int obsX,int obsY,String stringCommands, int expectedX, int expectedY, Direction expectedDirection){
+
+        mars.obstaclePositions().add(new Position.FixedPosition(obsX,obsY,Direction.NORTH));
+        Rover rover = new Rover(generatePosition(roverX, roverY,direction, mars), mars);
+        rover.configureLaserRange(range);
+        rover.move(stringCommands);
+        assertThat(rover.getPositionRover().getX()).isEqualTo(expectedX);
+        assertThat(rover.getPositionRover().getY()).isEqualTo(expectedY);
+        assertThat(rover.getPositionRover().getDirection()).isEqualTo(expectedDirection);
+
+    }
+
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
         Point point = new Point(posX, posY, mars);
         return new PositionRover(point, direction);
     }
+
+
 
 
 }

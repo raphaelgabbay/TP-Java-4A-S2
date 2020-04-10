@@ -13,6 +13,7 @@ public class Rover implements MarsRover {
     public Rover(PositionRover positionRover, Mars mars) {
         this.positionRover = positionRover;
         this.mars = mars;
+        this.laser = new Laser(mars,0);
     }
 
     @Override
@@ -29,11 +30,16 @@ public class Rover implements MarsRover {
             case 'r': positionRover.rotateRight(); break;
             case 'f': positionRover.goForward(); break;
             case 'b': positionRover.goBackward(); break;
+            case 's': shoot(); break;
         }
     }
 
     public PositionRover getPositionRover() {
         return positionRover;
+    }
+
+    public void shoot(){
+        laser.shoot(positionRover,positionRover.getDirection());
     }
 
     @Override

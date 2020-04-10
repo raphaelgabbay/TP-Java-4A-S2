@@ -71,8 +71,12 @@ public class PositionRoverTest {
         assertThat(positionRover.getY()).isEqualTo(expectedPosY);
     }
 
+    void is_get_right_position(){}
+
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
         Point point = new Point(posX, posY, mars);
         return new PositionRover(point, direction);
     }
+
+
 }
