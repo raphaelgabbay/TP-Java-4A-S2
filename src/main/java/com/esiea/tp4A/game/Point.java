@@ -1,4 +1,4 @@
-package com.esiea.tp4A;
+package com.esiea.tp4A.game;
 
 public class Point {
     private int posY;
