@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.esiea.tp4A.domain.Direction;
 import com.esiea.tp4A.domain.Position;
+import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,7 +17,8 @@ public class RoverTest {
         "0,0,SOUTH,ffl,0,-2,EAST",
         "0,0,WEST,lll,0,0,NORTH",
         "0,-49,NORTH,bbl,0,49,WEST",
-        "50,0,EAST,fl,-49,0,NORTH"
+        "50,0,EAST,fl,-49,0,NORTH",
+        "0,0,NORTH,rr,0,0,SOUTH"
     })
     void is_rover_moved_right(int posX, int posY, Direction direction, String stringCommands , int expectedPosX, int expectedPosY, Direction expectedDirection){
 
@@ -74,11 +76,41 @@ public class RoverTest {
 
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+        "1,2,NORTH",
+        "-1,2,SOUTH",
+        "1,-2,EAST",
+        "-1,-2,WEST"
+    })
+    void is_rover_intialized(int x, int y, Direction direction){
+        Rover rover = new Rover(generatePosition(0, 0,direction, mars), mars);
+        Position p = generatePosition(0, 0,direction, mars);
+        rover.initialize(p);
+        assertThat(rover.getPositionRover().getX() == x);
+        assertThat(rover.getPositionRover().getY() == y);
+        assertThat(rover.getPositionRover().getDirection() == direction);
+
+    }
+    @ParameterizedTest
+    @CsvSource(value = {
+        "5,100",
+        "10,300",
+        "15,600"
+    })
+    public void is_map_updated(int numberObstacles,int mapSize) {
+        Mars m1 = new Mars(0, mapSize);
+        Mars m2 = new Mars(numberObstacles, mapSize);
+        Rover rover = new Rover(generatePosition(0, 0,Direction.NORTH, m1), m1);
+        rover.updateMap(m2);
+        assertThat(rover.getMars() == m2);
+    }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
         Point point = new Point(posX, posY, mars);
         return new PositionRover(point, direction);
     }
+
 
 
 

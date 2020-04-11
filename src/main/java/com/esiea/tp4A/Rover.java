@@ -37,7 +37,7 @@ public class Rover implements MarsRover {
     public PositionRover getPositionRover() {
         return positionRover;
     }
-
+    public Mars getMars() { return mars; }
     public void shoot(){
         laser.shoot(positionRover,positionRover.getDirection());
     }
@@ -51,7 +51,6 @@ public class Rover implements MarsRover {
 
     @Override
     public MarsRover updateMap(PlanetMap map) {
-        Mars mars = new Mars(0,100);
         mars.setObstacles(map.obstaclePositions());
         return this;
     }
