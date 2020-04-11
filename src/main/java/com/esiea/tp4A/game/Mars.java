@@ -1,17 +1,18 @@
-package com.esiea.tp4A;
+package com.esiea.tp4A.game;
 
-import com.esiea.tp4A.domain.Direction;
-import com.esiea.tp4A.domain.PlanetMap;
-import com.esiea.tp4A.domain.Position;
+import com.esiea.tp4A.game.domain.Direction;
+import com.esiea.tp4A.game.domain.PlanetMap;
+import com.esiea.tp4A.game.domain.Position;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Mars implements PlanetMap {
     private final MapCoordinates coordinates;
     private Set<Position> obstacles = new HashSet<>();
-    private ArrayList<Rover> rovers = new ArrayList<>();
+    private Set<Rover> rovers = new HashSet<>();
 
     public Mars(int numberOfObstacles, int mapSize) {
         coordinates = new MapCoordinates(mapSize/2, -1*((mapSize/2) - 1), mapSize/2, -1*((mapSize/2) - 1));
@@ -40,22 +41,21 @@ public class Mars implements PlanetMap {
 
 
     public boolean checkIfObstacle(int x, int y) {
-        return obstacles.stream()
+        return Stream.concat(rovers.stream().map(Rover::getPositionRover),
+            obstacles.stream())
             .anyMatch(p -> p.getX() == x && p.getY() == y);
     }
 
     public void destroyObstacle(int x, int y) {
         obstacles.removeIf(position -> position.getX() == x && position.getY() == y);
+        rovers.removeIf(rover -> rover.getPositionRover().getX() == x && rover.getPositionRover().getY() == y);
     }
 
     public void generateRovers() {
         Commons commons = new Commons();
         for (int i = 0; i < 50 ; i++) {
-            Point p = new Point(commons.getRandomInt(coordinates.getMaxPosX(), coordinates.getMinPosX())
-                , commons.getRandomInt(coordinates.getMaxPosY(), coordinates.getMinPosY()), this);
-            addRover(new Rover(
-                new PositionRover(
-                    p, Direction.NORTH), this));
+            Point p = new Point(commons.getRandomInt(coordinates.getMaxPosX(), coordinates.getMinPosX()) , commons.getRandomInt(coordinates.getMaxPosY(), coordinates.getMinPosY()), this);
+            addRover(new Rover(new PositionRover(p, Direction.NORTH), this, i));
         }
     }
 
@@ -76,7 +76,7 @@ public class Mars implements PlanetMap {
         return rovers.add(rover);
     }
 
-    public ArrayList<Rover> getRovers() {
+    public Set<Rover> getRovers() {
         return rovers;
     }
 }

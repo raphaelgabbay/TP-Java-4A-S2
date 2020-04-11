@@ -1,6 +1,6 @@
-package com.esiea.tp4A;
+package com.esiea.tp4A.game;
 
-import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.game.domain.Direction;
 
 public interface PolarDegreesRotation {
     Direction rotateLeft();

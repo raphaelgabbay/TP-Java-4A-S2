@@ -1,19 +1,27 @@
-package com.esiea.tp4A;
+package com.esiea.tp4A.game;
 
-import com.esiea.tp4A.domain.Direction;
-import com.esiea.tp4A.domain.MarsRover;
-import com.esiea.tp4A.domain.PlanetMap;
-import com.esiea.tp4A.domain.Position;
+import com.esiea.tp4A.game.domain.Direction;
+import com.esiea.tp4A.game.domain.MarsRover;
+import com.esiea.tp4A.game.domain.PlanetMap;
+import com.esiea.tp4A.game.domain.Position;
 
 public class Rover implements MarsRover {
     private PositionRover positionRover;
     private Mars mars;
     private Laser laser;
+    private int id;
 
     public Rover(PositionRover positionRover, Mars mars) {
         this.positionRover = positionRover;
         this.mars = mars;
         this.laser = new Laser(mars,0);
+    }
+
+    public Rover(PositionRover positionRover, Mars mars, int id) {
+        this.positionRover = positionRover;
+        this.mars = mars;
+        this.laser = new Laser(mars,0);
+        this.id = id;
     }
 
     @Override
@@ -59,5 +67,13 @@ public class Rover implements MarsRover {
     public MarsRover configureLaserRange(int range) {
         laser.setRange(range);
         return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

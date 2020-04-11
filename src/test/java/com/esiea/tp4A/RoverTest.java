@@ -1,10 +1,11 @@
 package com.esiea.tp4A;
 
+import static com.esiea.tp4A.game.domain.Direction.NORTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.esiea.tp4A.domain.Direction;
-import com.esiea.tp4A.domain.Position;
-import org.junit.Test;
+import com.esiea.tp4A.game.*;
+import com.esiea.tp4A.game.domain.Direction;
+import com.esiea.tp4A.game.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -104,6 +105,25 @@ public class RoverTest {
         Rover rover = new Rover(generatePosition(0, 0,Direction.NORTH, m1), m1);
         rover.updateMap(m2);
         assertThat(rover.getMars() == m2);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "0,0,NORTH,100,0",
+        "0,0,NORTH,99,1",
+        "0,0,SOUTH,100,0",
+        "0,0,SOUTH,99,1",
+        "0,0,WEST,100,0",
+        "0,0,WEST,99,1",
+        "0,0,EAST,100,0",
+        "0,0,EAST,99,1",
+    })
+    public void does_rover_destroy_itself(int roverX, int roverY, Direction direction, int range, int expectedSize) {
+        Rover rover = new Rover(generatePosition(roverX, roverY, direction, mars), mars);
+        rover.configureLaserRange(range);
+        mars.addRover(rover);
+        rover.shoot();
+        assertThat(mars.getRovers().size()).isEqualTo(expectedSize);
     }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
