@@ -73,7 +73,4 @@ public class Rover implements MarsRover {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }
