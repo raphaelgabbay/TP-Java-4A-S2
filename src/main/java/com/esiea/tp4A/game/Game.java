@@ -19,23 +19,21 @@ public class Game {
 
 
     public int generateMapSize(int n) {
-        int ret = 1;
         switch(n){
-            case 1 : ret = 100; break;
-            case 2 : ret = 300; break;
-            case 3 : ret = 600; break;
+            case 1 : return 100;
+            case 2 : return 300;
+            case 3 : return 600;
+            default: return 100;
         }
-        return ret;
     }
 
     public int generateLaserRange(int n) {
-        int ret = 1;
         switch(n){
-            case 1 : ret = 5; break;
-            case 2 : ret = 30; break;
-            case 3 : ret = mars.getCoordinates().getMaxPosX()*2; break; //this handle easily infinite range
+            case 1 : return 5;
+            case 2 : return 30;
+            case 3 : return mars.getCoordinates().getMaxPosX()*2; //this handle easily infinite range
+            default: return 5;
         }
-        return ret;
     }
 
     public Mars getMars() {
