@@ -21,8 +21,8 @@ public class Game {
     public int generateMapSize(int n) {
         switch(n){
             case 1 : return 100;
-            case 2 : return 300;
-            case 3 : return 600;
+//            case 2 : return 300;
+//            case 3 : return 600;
             default: return 100;
         }
     }
