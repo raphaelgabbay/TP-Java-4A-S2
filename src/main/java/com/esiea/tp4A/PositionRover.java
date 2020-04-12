@@ -11,16 +11,12 @@ public class PositionRover implements Position {
         this.point = point;
         this.direction = direction;
     }
-
-
     public Direction rotateLeft() {
         return direction = direction.rotateLeft();
     }
-
     public Direction rotateRight() {
         return direction = direction.rotateRight();
     }
-
     public Point goForward() {
         switch (direction) {
             case NORTH: point.posYForward(); break;
@@ -40,17 +36,14 @@ public class PositionRover implements Position {
         }
         return point;
     }
-
     @Override
     public int getX() {
         return point.getPosX();
     }
-
     @Override
     public int getY() {
         return point.getPosY();
     }
-
     @Override
     public Direction getDirection() {
         return direction;
