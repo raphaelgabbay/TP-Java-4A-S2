@@ -13,5 +13,5 @@ public interface GameAPI {
     void moveRover(int playerId, String commands);
     boolean getRoverStatus(int playerId);
     boolean addPlayer(String name);
-
+    int getPlayerByName(String name);
 }
