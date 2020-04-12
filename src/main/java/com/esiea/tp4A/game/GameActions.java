@@ -29,7 +29,7 @@ public class GameActions implements GameAPI {
     @Override
     public Set<Position> getNearOpponentsPosition(int playerId) {
         Position playerPosition = getPlayerPosition(playerId);
-        return game.getMars().getRovers().stream().filter(rover -> rover.getPositionRover().getX() <= playerPosition.getX() + 30 && rover.getPositionRover().getX() >= playerPosition.getX() - 30 && rover.getPositionRover().getY() <= playerPosition.getY() + 30 && rover.getPositionRover().getY() >= playerPosition.getY() - 30 && rover.getId() != playerId).collect(Collectors.toSet()).stream().map(Rover::getPositionRover).collect(Collectors.toSet());
+        return game.getMars().getRovers().stream().filter(rover -> rover.getPositionRover().getX() < playerPosition.getX() + 30 && rover.getPositionRover().getX() > playerPosition.getX() - 30 && rover.getPositionRover().getY() < playerPosition.getY() + 30 && rover.getPositionRover().getY() > playerPosition.getY() - 30).collect(Collectors.toSet()).stream().map(Rover::getPositionRover).collect(Collectors.toSet());
     }
 
     @Override
@@ -50,5 +50,13 @@ public class GameActions implements GameAPI {
     @Override
     public boolean getRoverStatus(int playerId) {
         return getPlayerPosition(playerId) != null;
+    }
+
+    @Override
+    public boolean addPlayer(String name) {
+        if (game.getPlayers().containsKey(name)) return false;
+        Optional<Integer> first = game.getMars().getRovers().stream().map(Rover::getId).filter(integer -> !game.getPlayers().containsValue(integer)).findFirst();
+        first.ifPresent(integer -> game.getPlayers().put(name, integer));
+        return first.isPresent();
     }
 }
