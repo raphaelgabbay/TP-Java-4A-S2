@@ -31,7 +31,7 @@ public class PlayerController {
     @PATCH
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/player/{playerName}/{command}")
-    public Response playerStatus(@PathParam("playerName") String playerName, @PathParam("command") String command) {
+    public Response playerActions(@PathParam("playerName") String playerName, @PathParam("command") String command) {
         if (gameActions.getPlayerByName(playerName) != -1) {
             gameActions.moveRover(gameActions.getPlayerByName(playerName), command);
             return Response.status(Response.Status.OK).build();
