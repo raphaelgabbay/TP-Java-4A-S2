@@ -7,8 +7,8 @@ import com.esiea.tp4A.game.domain.Position;
 
 public class Rover implements MarsRover {
     private PositionRover positionRover;
-    private Mars mars;
-    private Laser laser;
+    private final Mars mars;
+    private final Laser laser;
     private int id;
 
     public Rover(PositionRover positionRover, Mars mars) {
@@ -73,7 +73,4 @@ public class Rover implements MarsRover {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }

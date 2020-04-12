@@ -51,4 +51,12 @@ public class GameActions implements GameAPI {
     public boolean getRoverStatus(int playerId) {
         return getPlayerPosition(playerId) != null;
     }
+
+    @Override
+    public boolean addPlayer(String name) {
+        if (game.getPlayers().containsKey(name)) return false;
+        Optional<Integer> first = game.getMars().getRovers().stream().map(Rover::getId).filter(integer -> !game.getPlayers().containsValue(integer)).findFirst();
+        first.ifPresent(integer -> game.getPlayers().put(name, integer));
+        return first.isPresent();
+    }
 }

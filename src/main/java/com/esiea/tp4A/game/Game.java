@@ -1,15 +1,17 @@
 package com.esiea.tp4A.game;
 
+import java.util.HashMap;
+
 public class Game {
     private final Mars mars;
     private final int mapSize;
     private final int laserRange;
+    private static Game game = null;
+    private final HashMap<String, Integer> players = new HashMap<>();
 
-    //todo : mettre en singleton
-    public Game() {
+    private Game() {
         Commons commons = new Commons();
-        int randomInt = commons.getRandomInt(3, 1);
-        mapSize = generateMapSize(randomInt);
+        mapSize = generateMapSize(commons.getRandomInt(3, 1));
         mars = new Mars(0, mapSize);
 
         mars.generateObstacles((int) (Math.pow(mapSize,2) * 0.15));
@@ -17,6 +19,12 @@ public class Game {
         laserRange = generateLaserRange(commons.getRandomInt(3, 1));
     }
 
+    public static Game getGame() {
+        if (game == null) {
+            game = new Game();
+        }
+        return game;
+    }
 
     public int generateMapSize(int n) {
         switch(n){
@@ -46,5 +54,9 @@ public class Game {
 
     public int getMapSize() {
         return mapSize;
+    }
+
+    public HashMap<String, Integer> getPlayers() {
+        return players;
     }
 }
