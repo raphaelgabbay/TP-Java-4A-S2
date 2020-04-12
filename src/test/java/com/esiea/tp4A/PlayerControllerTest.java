@@ -32,4 +32,49 @@ public class PlayerControllerTest {
             .then()
             .statusCode(409);
     }
+
+    @Test
+    public void testPlayerStatusSuccess() {
+        String uuid = UUID.randomUUID().toString();
+        gameActions.addPlayer(uuid);
+        given()
+            .pathParam("playerName", uuid)
+            .when().get("/api/player/{playerName}")
+            .then()
+            .statusCode(200);
+    }
+
+    @Test
+    public void testPlayerStatusFailure() {
+        String uuid = UUID.randomUUID().toString();
+        given()
+            .pathParam("playerName", uuid)
+            .when().get("/api/player/{playerName}")
+            .then()
+            .statusCode(404);
+    }
+
+    @Test
+    public void testPlayerActionsSuccess() {
+        String uuid = UUID.randomUUID().toString();
+        gameActions.addPlayer(uuid);
+        given()
+            .pathParam("playerName", uuid)
+            .pathParam("command","f")
+            .when().patch("/api/player/{playerName}/{command}")
+            .then()
+            .statusCode(200);
+    }
+
+    @Test
+    public void testPlayerActionsFailure() {
+        String uuid = UUID.randomUUID().toString();
+        given()
+            .pathParam("playerName", uuid)
+            .pathParam("command","f")
+            .when().patch("/api/player/{playerName}/{command}")
+            .then()
+            .statusCode(404);
+    }
+
 }
