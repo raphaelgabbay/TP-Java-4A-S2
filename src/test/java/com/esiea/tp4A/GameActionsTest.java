@@ -93,8 +93,6 @@ public class GameActionsTest {
         "0,0,NORTH,fb,0,0,NORTH",
         "0,0,SOUTH,ffl,0,-2,EAST",
         "0,0,WEST,lll,0,0,NORTH",
-        "0,-49,NORTH,bbl,0,49,WEST",
-        "50,0,EAST,fl,-49,0,NORTH",
         "0,0,NORTH,rr,0,0,SOUTH"
     })
     void is_rover_moved_right(int roverX, int roverY, Direction direction, String stringCommands , int expectedPosX, int expectedPosY, Direction expectedDirection){
