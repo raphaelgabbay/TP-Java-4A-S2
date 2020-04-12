@@ -2,7 +2,7 @@ package com.esiea.tp4A;
 
 import com.esiea.tp4A.domain.Direction;
 import com.esiea.tp4A.domain.Position;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -21,6 +21,7 @@ public class GameActionsTest {
 
     @Test
     public void is_player_added_right() {
+        game.getPlayers().clear();
         assertThat(gameActions.addPlayer("bob")).isEqualTo(true);
         assertThat(game.getPlayers().containsKey("bob")).isEqualTo(true);
         assertThat(gameActions.addPlayer("bob")).isEqualTo(false);
@@ -142,6 +143,7 @@ public class GameActionsTest {
 
     @Test
     public void is_player_get_right() {
+        game.getPlayers().clear();
         gameActions.addPlayer("bob");
         assertThat(gameActions.getPlayerByName("bob")).isEqualTo(game.getPlayers().get("bob"));
         assertThat(gameActions.getPlayerByName("dylan")).isEqualTo(-1);
