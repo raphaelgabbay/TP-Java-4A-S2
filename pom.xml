@@ -72,7 +72,12 @@
             <artifactId>netty-buffer</artifactId>
             <version>4.1.45.Final</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1</version>
+        </dependency>
     </dependencies>
 
     <build>
