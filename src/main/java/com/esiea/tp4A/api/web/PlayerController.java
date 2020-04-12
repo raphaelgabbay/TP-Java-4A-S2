@@ -1,7 +1,7 @@
 package com.esiea.tp4A.api.web;
 
-import com.esiea.tp4A.game.Game;
-import com.esiea.tp4A.game.GameActions;
+import com.esiea.tp4A.Game;
+import com.esiea.tp4A.GameActions;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.ws.rs.GET;

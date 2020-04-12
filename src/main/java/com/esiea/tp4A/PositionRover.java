@@ -1,7 +1,7 @@
-package com.esiea.tp4A.game;
+package com.esiea.tp4A;
 
-import com.esiea.tp4A.game.domain.Direction;
-import com.esiea.tp4A.game.domain.Position;
+import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.Position;
 
 public class PositionRover implements Position {
     private final Point point;

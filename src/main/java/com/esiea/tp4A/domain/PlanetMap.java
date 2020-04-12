@@ -1,4 +1,4 @@
-package com.esiea.tp4A.game.domain;
+package com.esiea.tp4A.domain;
 
 import java.util.Set;
 

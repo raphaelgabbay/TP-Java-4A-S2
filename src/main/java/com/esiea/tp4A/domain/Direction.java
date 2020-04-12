@@ -1,6 +1,6 @@
-package com.esiea.tp4A.game.domain;
+package com.esiea.tp4A.domain;
 
-import com.esiea.tp4A.game.PolarDegreesRotation;
+import com.esiea.tp4A.PolarDegreesRotation;
 
 public enum Direction implements PolarDegreesRotation {
     NORTH {

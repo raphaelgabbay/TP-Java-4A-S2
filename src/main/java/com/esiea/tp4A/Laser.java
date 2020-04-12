@@ -1,5 +1,5 @@
-package com.esiea.tp4A.game;
-import com.esiea.tp4A.game.domain.*;
+package com.esiea.tp4A;
+import com.esiea.tp4A.domain.*;
 
 public class Laser {
     private final Mars mars;
