@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -70,8 +71,23 @@ public class PositionRoverTest {
         assertThat(positionRover.getX()).isEqualTo(expectedPosX);
         assertThat(positionRover.getY()).isEqualTo(expectedPosY);
     }
+    @ParameterizedTest
+    @CsvSource({
+        "0,0,NORTH",
+        "0,-49,NORTH",
+        "0,0,EAST",
+        "-49,0,EAST",
+        "0,0,SOUTH",
+        "0,0,WEST",
+        "50,0,WEST"
+    })
+    void is_position_set_right(int posX, int posY, Direction direction){
+        Position p = new Position.FixedPosition(posX,posY,direction);
+        assertThat(p.getX()).isEqualTo(posX);
+        assertThat(p.getY()).isEqualTo(posY);
+        assertThat(p.getDirection()).isEqualTo(direction);
 
-
+    }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {
         Point point = new Point(posX, posY, mars);

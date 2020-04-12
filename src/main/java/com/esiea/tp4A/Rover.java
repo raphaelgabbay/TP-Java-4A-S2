@@ -10,20 +10,17 @@ public class Rover implements MarsRover {
     private final Mars mars;
     private final Laser laser;
     private int id;
-
     public Rover(PositionRover positionRover, Mars mars) {
         this.positionRover = positionRover;
         this.mars = mars;
         this.laser = new Laser(mars,0);
     }
-
     public Rover(PositionRover positionRover, Mars mars, int id) {
         this.positionRover = positionRover;
         this.mars = mars;
         this.laser = new Laser(mars,0);
         this.id = id;
     }
-
     @Override
     public Position move(String commands){
         for (char c : commands.toCharArray()) {
@@ -31,7 +28,6 @@ public class Rover implements MarsRover {
         }
         return positionRover;
     }
-
     private void executeCommand(char command) {
         switch(command) {
             case 'l': positionRover.rotateLeft(); break;
@@ -41,36 +37,24 @@ public class Rover implements MarsRover {
             case 's': shoot(); break;
         }
     }
-
-    public PositionRover getPositionRover() {
-        return positionRover;
-    }
+    public PositionRover getPositionRover() { return positionRover; }
     public Mars getMars() { return mars; }
-    public void shoot(){
-        laser.shoot(positionRover,positionRover.getDirection());
-    }
-
+    public void shoot(){ laser.shoot(positionRover,positionRover.getDirection());}
     @Override
     public MarsRover initialize(Position position) {
         Point point = new Point(position.getX(), position.getY(), mars);
         positionRover = new PositionRover(point, Direction.NORTH);
         return this;
     }
-
     @Override
     public MarsRover updateMap(PlanetMap map) {
         mars.setObstacles(map.obstaclePositions());
         return this;
     }
-
     @Override
     public MarsRover configureLaserRange(int range) {
         laser.setRange(range);
         return this;
     }
-
-    public int getId() {
-        return id;
-    }
-
+    public int getId() {return id;}
 }

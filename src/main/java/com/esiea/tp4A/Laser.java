@@ -4,13 +4,10 @@ import com.esiea.tp4A.domain.*;
 public class Laser {
     private final Mars mars;
     private int range;
-
     public Laser(Mars mars, int range) {
         this.mars = mars;
         this.range = range;
     }
-
-    //todo : détruire les rovers
     public void shoot(PositionRover pos, Direction dir){
         switch (dir) {
             case NORTH:
@@ -23,7 +20,6 @@ public class Laser {
                 shootWest(pos); break;
         }
     }
-
     private void shootNorth(PositionRover pos) {
         Point p = new Point(pos.getX(),pos.getY(),mars);
         for(int i = 0 ; i < this.range ; i++){
@@ -60,7 +56,6 @@ public class Laser {
             }
         }
     }
-
     public void setRange(int range) {
         this.range = range;
     }
