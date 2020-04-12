@@ -72,7 +72,6 @@
             <artifactId>netty-buffer</artifactId>
             <version>4.1.45.Final</version>
         </dependency>
-
     </dependencies>
 
     <build>
