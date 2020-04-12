@@ -40,7 +40,7 @@ Les joueurs ont un ID propre ainsi que les parties.
 Un joueur pourra donc faire une requête vers la bonne partie en fonction de l’ihm requête.
 
 **Que se passera-t-il si un serveur plante ? (considérer la machine / vm / conteneur éteint(e) et inaccessible)**
-Si un conteneur plante le load envoyer redirigera les requêtes vers un nouveau conteneur créé.
+Si un conteneur plante le load balancer redirigera les requêtes vers un nouveau conteneur créé.
 
 **Comment les joueurs s'authentifient et sauvegardent leur progression ?**
 Les joueurs s'authentifient avec leurs noms et mot de passe. Ce nom sera chargé dans l’API du jeu.
@@ -48,7 +48,7 @@ Si le nom d’un joueur n’est pas déjà dans le dictionnaire, il sera ajouté
 
 **Comment gérer une charge imprévue ? (100x plus de joueurs que prévu par ex)**
 Si une charge imprévue est en cours le serveur devra avoir suffisamment de puissance pour générer assez de conteneur pour supporter la charge.
-Dans le cas contraire, une architecture cloud pour redimensionner le nombre de conteneur en fonction de la charge.
+Dans le cas contraire, une architecture cloud pour redimensionner le nombre de conteneurs en fonction de la charge pourra être envisagée.
 
 
 Diagramme de l'architecture du système
