@@ -110,12 +110,13 @@ public class GameActionsTest {
 
     @ParameterizedTest
     @CsvSource({
-        "0,0,NORTH,100",
-        "0,0,SOUTH,100",
-        "0,0,WEST,100",
-        "0,0,EAST,100"
+        "0,0,NORTH",
+        "0,0,SOUTH",
+        "0,0,WEST",
+        "0,0,EAST"
     })
-    public void is_player_status_ok(int roverX, int roverY, Direction direction, int range) {
+    public void is_player_status_ok(int roverX, int roverY, Direction direction) {
+        int range = generalGame.getMapSize();
         generalGame.getMars().obstaclePositions().clear();
         generalGame.getMars().getRovers().clear();
         Rover rover = new Rover(generatePosition(roverX, roverY,direction, generalGame.getMars()), generalGame.getMars(), 0);
