@@ -29,7 +29,7 @@ public class GameActions implements GameAPI {
     @Override
     public Set<Position> getNearOpponentsPosition(int playerId) {
         Position playerPosition = getPlayerPosition(playerId);
-        return game.getMars().getRovers().stream().filter(rover -> rover.getPositionRover().getX() < playerPosition.getX() + 30 && rover.getPositionRover().getX() > playerPosition.getX() - 30 && rover.getPositionRover().getY() < playerPosition.getY() + 30 && rover.getPositionRover().getY() > playerPosition.getY() - 30).collect(Collectors.toSet()).stream().map(Rover::getPositionRover).collect(Collectors.toSet());
+        return game.getMars().getRovers().stream().filter(rover -> rover.getPositionRover().getX() <= playerPosition.getX() + 30 && rover.getPositionRover().getX() >= playerPosition.getX() - 30 && rover.getPositionRover().getY() <= playerPosition.getY() + 30 && rover.getPositionRover().getY() >= playerPosition.getY() - 30 && rover.getId() != playerId).collect(Collectors.toSet()).stream().map(Rover::getPositionRover).collect(Collectors.toSet());
     }
 
     @Override
