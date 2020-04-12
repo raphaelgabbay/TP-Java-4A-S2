@@ -1,4 +1,4 @@
-#Conception du Système
+# Conception du Système
 
 **Est-ce que les joueurs interagiront en temps réel, ou au tour par tour et pourquoi ?**
 Les joueurs interagiront au tour par tour. Car l'interaction dans un jeu en temps réel avec un serveur est beaucoup plus complexe.
