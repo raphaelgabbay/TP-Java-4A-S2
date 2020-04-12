@@ -1,7 +1,7 @@
-package com.esiea.tp4A.game;
+package com.esiea.tp4A;
 
 import com.esiea.tp4A.api.GameAPI;
-import com.esiea.tp4A.game.domain.Position;
+import com.esiea.tp4A.domain.Position;
 
 import java.util.Optional;
 import java.util.Set;

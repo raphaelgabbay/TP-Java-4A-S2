@@ -4,10 +4,8 @@ package com.esiea.tp4A;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-import com.esiea.tp4A.game.Mars;
-import com.esiea.tp4A.game.Point;
-import com.esiea.tp4A.game.PositionRover;
-import com.esiea.tp4A.game.domain.Direction;
+import com.esiea.tp4A.domain.Direction;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -55,6 +53,7 @@ public class PositionRoverTest {
         positionRover.goForward();
         assertThat(positionRover.getX()).isEqualTo(expectedPosX);
         assertThat(positionRover.getY()).isEqualTo(expectedPosY);
+        assertThat(positionRover.getDirection()).isEqualTo(direction);
     }
 
     @ParameterizedTest
@@ -72,6 +71,7 @@ public class PositionRoverTest {
         positionRover.goBackward();
         assertThat(positionRover.getX()).isEqualTo(expectedPosX);
         assertThat(positionRover.getY()).isEqualTo(expectedPosY);
+        assertThat(positionRover.getDirection()).isEqualTo(direction);
     }
 
 

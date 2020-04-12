@@ -1,7 +1,5 @@
 package com.esiea.tp4A;
 
-import com.esiea.tp4A.game.Game;
-import com.esiea.tp4A.game.GameActions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
