@@ -11,8 +11,9 @@ buildNumber.properties
 
 
 # Ignoring Maven wrapper to be downloaded
-.mvn/wrapper/maven-wrapper.jar
-
+.mvn/wrapper/*
+mvnw
+mvnw.cmd
 
 # IntelliJ
 .idea/

@@ -1,6 +1,5 @@
 package com.esiea.tp4A;
 
-import static com.esiea.tp4A.game.domain.Direction.NORTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.esiea.tp4A.game.*;
