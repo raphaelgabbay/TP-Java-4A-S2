@@ -1,4 +1,4 @@
-package com.esiea.tp4A.game;
+package com.esiea.tp4A;
 
 import java.util.Random;
 

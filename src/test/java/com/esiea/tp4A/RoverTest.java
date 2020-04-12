@@ -2,9 +2,8 @@ package com.esiea.tp4A;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.esiea.tp4A.game.*;
-import com.esiea.tp4A.game.domain.Direction;
-import com.esiea.tp4A.game.domain.Position;
+import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
