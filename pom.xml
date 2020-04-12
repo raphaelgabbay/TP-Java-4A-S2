@@ -15,6 +15,8 @@
         <assertj.version>3.14.0</assertj.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <h2.version>1.4.197</h2.version>
+        <springframework.boot.version>2.2.6.RELEASE</springframework.boot.version>
     </properties>
 
     <name>tp-4A-2020</name>
@@ -38,6 +40,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
         </dependency>
     </dependencies>
 
@@ -79,7 +87,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
- 
         </plugins>
     </build>
 </project>
