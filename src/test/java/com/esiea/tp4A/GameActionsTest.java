@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameActionsTest {
     public final Game generalGame = Game.getGame();
-    public final GameActions gameActions = new GameActions(game);
+    public final GameActions gameActions = new GameActions(generalGame);
 
     @Test
     public void does_API_get_player_right() {
@@ -24,7 +24,7 @@ public class GameActionsTest {
     @Test
     public void is_player_added_right() {
         assertThat(gameActions.addPlayer("bob")).isEqualTo(true);
-        assertThat(game.getPlayers().containsKey("bob")).isEqualTo(true);
+        assertThat(generalGame.getPlayers().containsKey("bob")).isEqualTo(true);
         assertThat(gameActions.addPlayer("bob")).isEqualTo(false);
     }
 
