@@ -3,7 +3,7 @@
 **Est-ce que les joueurs interagiront en temps réel, ou au tour par tour et pourquoi ?**
 Les joueurs interagiront au tour par tour. Car l'interaction dans un jeu en temps réel avec un serveur est beaucoup plus complexe.
 
-**Comment sera stocké l'état (toutes les données permettant de représenter le jeu) ? **
+**Comment sera stocké l'état (toutes les données permettant de représenter le jeu) ?**
 L’état du jeu (données permettant de représenter le jeu) sera stocké dans une base de données.
 
 Une table player contenant les informations d’un joueur:
