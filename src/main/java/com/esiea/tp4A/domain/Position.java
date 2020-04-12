@@ -1,4 +1,4 @@
-package com.esiea.tp4A.game.domain;
+package com.esiea.tp4A.domain;
 
 public interface Position {
     int getX();

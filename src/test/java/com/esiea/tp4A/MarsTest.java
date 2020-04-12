@@ -1,8 +1,7 @@
 package com.esiea.tp4A;
 
-import com.esiea.tp4A.game.Mars;
-import com.esiea.tp4A.game.domain.Direction;
-import com.esiea.tp4A.game.domain.Position;
+import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

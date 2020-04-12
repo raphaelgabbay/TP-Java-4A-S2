@@ -1,9 +1,9 @@
-package com.esiea.tp4A.game;
+package com.esiea.tp4A;
 
-import com.esiea.tp4A.game.domain.Direction;
-import com.esiea.tp4A.game.domain.MarsRover;
-import com.esiea.tp4A.game.domain.PlanetMap;
-import com.esiea.tp4A.game.domain.Position;
+import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.MarsRover;
+import com.esiea.tp4A.domain.PlanetMap;
+import com.esiea.tp4A.domain.Position;
 
 public class Rover implements MarsRover {
     private PositionRover positionRover;
