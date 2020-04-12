@@ -47,15 +47,12 @@ public class Game {
     public Mars getMars() {
         return mars;
     }
-
     public int getLaserRange() {
         return laserRange;
     }
-
     public int getMapSize() {
         return mapSize;
     }
-
     public HashMap<String, Integer> getPlayers() {
         return players;
     }

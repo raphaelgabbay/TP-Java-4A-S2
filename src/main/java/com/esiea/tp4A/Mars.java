@@ -12,13 +12,10 @@ public class Mars implements PlanetMap {
     private final MapCoordinates coordinates;
     private Set<Position> obstacles = new HashSet<>();
     private final Set<Rover> rovers = new HashSet<>();
-
     public Mars(int numberOfObstacles, int mapSize) {
         coordinates = new MapCoordinates(mapSize/2, -1*((mapSize/2) - 1), mapSize/2, -1*((mapSize/2) - 1));
         this.generateObstacles(numberOfObstacles);
     }
-
-    //todo : check there is no obstacle
     public void generateObstacles(int number) {
         if(number >= 0 ) {
             while (obstacles.size() != number) {
@@ -27,7 +24,6 @@ public class Mars implements PlanetMap {
             }
         }
     }
-
     private Position generateUniqueRandomObstacle(){
         Commons commons = new Commons();
         Point p;
@@ -37,19 +33,15 @@ public class Mars implements PlanetMap {
         } while(checkIfObstacle(p.getPosX(), p.getPosY()));
         return new Position.FixedPosition(p.getPosX(),p.getPosY(),Direction.NORTH);
     }
-
-
     public boolean checkIfObstacle(int x, int y) {
         return Stream.concat(rovers.stream().map(Rover::getPositionRover),
             obstacles.stream())
             .anyMatch(p -> p.getX() == x && p.getY() == y);
     }
-
     public void destroyObstacle(int x, int y) {
         obstacles.removeIf(position -> position.getX() == x && position.getY() == y);
         rovers.removeIf(rover -> rover.getPositionRover().getX() == x && rover.getPositionRover().getY() == y);
     }
-
     public void generateRovers() {
         Commons commons = new Commons();
         for (int i = 0; i < 50 ; i++) {
@@ -57,24 +49,11 @@ public class Mars implements PlanetMap {
             addRover(new Rover(new PositionRover(p, Direction.NORTH), this, i));
         }
     }
-
     @Override
-    public Set<Position> obstaclePositions() {
-        return obstacles;
-    }
-
-    public MapCoordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setObstacles(Set<Position> obstacles) {
-        this.obstacles = obstacles;
-    }
-
-    public boolean addRover(Rover rover) {
-        return rovers.add(rover);
-    }
-
+    public Set<Position> obstaclePositions() { return obstacles; }
+    public MapCoordinates getCoordinates() { return coordinates; }
+    public void setObstacles(Set<Position> obstacles) { this.obstacles = obstacles; }
+    public boolean addRover(Rover rover) { return rovers.add(rover); }
     public Set<Rover> getRovers() {
         return rovers;
     }
