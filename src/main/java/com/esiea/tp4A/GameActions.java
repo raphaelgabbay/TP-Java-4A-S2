@@ -59,4 +59,9 @@ public class GameActions implements GameAPI {
         first.ifPresent(integer -> game.getPlayers().put(name, integer));
         return first.isPresent();
     }
+
+    @Override
+    public int getPlayerByName(String name) {
+        return game.getPlayers().getOrDefault(name, -1);
+    }
 }
