@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LaserTest {
     public final Mars mars = new Mars(0, 100);
-    Laser laser = new Laser(mars, 0);
+    public final Laser laser = new Laser(mars, 0);
 
     @ParameterizedTest
     @CsvSource({

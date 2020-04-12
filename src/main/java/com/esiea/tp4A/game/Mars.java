@@ -4,7 +4,6 @@ import com.esiea.tp4A.game.domain.Direction;
 import com.esiea.tp4A.game.domain.PlanetMap;
 import com.esiea.tp4A.game.domain.Position;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -12,7 +11,7 @@ import java.util.stream.Stream;
 public class Mars implements PlanetMap {
     private final MapCoordinates coordinates;
     private Set<Position> obstacles = new HashSet<>();
-    private Set<Rover> rovers = new HashSet<>();
+    private final Set<Rover> rovers = new HashSet<>();
 
     public Mars(int numberOfObstacles, int mapSize) {
         coordinates = new MapCoordinates(mapSize/2, -1*((mapSize/2) - 1), mapSize/2, -1*((mapSize/2) - 1));

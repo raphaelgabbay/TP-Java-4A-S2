@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MarsTest {
-    Mars pm = new Mars(0, 100);
+    private final Mars pm = new Mars(0, 100);
     @ParameterizedTest
     @CsvSource({
         "0,0",
