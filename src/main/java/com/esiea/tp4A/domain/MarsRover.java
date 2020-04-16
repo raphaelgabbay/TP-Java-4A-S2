@@ -8,7 +8,6 @@ public interface MarsRover {
     default MarsRover updateMap(PlanetMap map) {
         return this;
     }
-
     default MarsRover configureLaserRange(int range) {
         return this;
     }

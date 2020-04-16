@@ -3,6 +3,7 @@ package com.esiea.tp4A;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.esiea.tp4A.domain.Direction;
+import com.esiea.tp4A.domain.MarsRover;
 import com.esiea.tp4A.domain.Position;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -122,6 +123,25 @@ public class RoverTest {
         mars.addRover(rover);
         rover.shoot();
         assertThat(mars.getRovers().size()).isEqualTo(expectedSize);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "'', 0, 0, NORTH",
+        "f, 0, 1, NORTH",
+        "b, 0, -1, NORTH",
+        "l, 0, 0, WEST",
+        "r, 0, 0, EAST",
+        "lbblffr,2,-2,WEST",
+        "aff,0,2,NORTH"
+    })
+    void basic_moves_from_center(String command, int expectedX, int expectedY, Direction expectedDirection) {
+        MarsRover marsRover = new Rover(generatePosition(-1, 2, Direction.SOUTH, mars), mars);
+        marsRover.initialize(Position.of(0, 0, Direction.NORTH));
+        Position newPosition = marsRover.move(command);
+        assertThat(newPosition)
+            .as("new position after receiving command '" + command + "'")
+            .isEqualTo(Position.of(expectedX, expectedY, expectedDirection));
     }
 
     private PositionRover generatePosition(int posX, int posY, Direction direction, Mars mars) {

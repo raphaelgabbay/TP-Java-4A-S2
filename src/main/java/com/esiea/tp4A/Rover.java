@@ -26,7 +26,7 @@ public class Rover implements MarsRover {
         for (char c : commands.toCharArray()) {
             executeCommand(c);
         }
-        return positionRover;
+        return Position.of(this.getPositionRover().getX(),this.getPositionRover().getY(),this.getPositionRover().getDirection());
     }
     private void executeCommand(char command) {
         switch(command) {
