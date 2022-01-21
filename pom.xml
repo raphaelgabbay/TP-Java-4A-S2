@@ -15,7 +15,7 @@
         <assertj.version>3.14.0</assertj.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
-        <h2.version>1.4.197</h2.version>
+        <h2.version>2.1.210</h2.version>
         <springframework.boot.version>2.2.6.RELEASE</springframework.boot.version>
     </properties>
 
